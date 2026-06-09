@@ -187,7 +187,7 @@ Liên kết GitHub repository:
 Liên kết GitHub Pages:
 <<<<<<< HEAD
 =======
-Họ và tên: Phạm Tuấn Kha
+Họ và tên: Phạm Tuấn Khoa
 Mã số sinh viên: 110124095
 Lớp: DA24TTC
 Tên đề tài: BIBURN-WEBSITE ĐẶT TRÀ SỮA VÀ CÀ PHÊ TRỰC TUYẾN
