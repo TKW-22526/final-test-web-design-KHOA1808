@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BiBurn – Trà Sữa & Cà Phê</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="index.html" class="logo">Bi<span>Burn</span> 🧋</a>
+    <ul>
+      <li><a href="index.html" class="active">Trang Chủ</a></li>
+      <li><a href="html/menu.html">Thực Đơn</a></li>
+      <li><a href="html/about.html">Về Chúng Tôi</a></li>
+      <li><a href="html/contact.html">Liên Hệ</a></li>
+      <li><a href="html/order.html" class="nav-cart">🛒 Giỏ Hàng <span class="cart-count" style="display:none">0</span></a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>BiBurn 🧋</h1>
+  <p>Trà sữa – Cà phê – Nước uống sáng tạo</p>
+  <p style="font-size:0.9rem; opacity:0.7; margin-top:-8px; margin-bottom:20px;">Làm từ nguyên liệu tươi ngon mỗi ngày ✨</p>
+  <div class="hero-btns">
+    <a href="html/menu.html" class="btn btn-white">🍹 Xem Thực Đơn</a>
+    <a href="html/order.html" class="btn btn-outline">🛒 Đặt Ngay</a>
+  </div>
+</section>
+
+<!-- MAIN CONTENT -->
+<div class="section">
+
+  <!-- FEATURES -->
+  <div class="features">
+    <div class="feature-card">
+      <div class="icon">🌿</div>
+      <h3>Nguyên Liệu Tươi</h3>
+      <p>100% nguyên liệu tươi, không chất bảo quản</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon">⚡</div>
+      <h3>Pha Chế Nhanh</h3>
+      <p>Thời gian pha chế chỉ 3-5 phút mỗi ly</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon">💚</div>
+      <h3>Giá Sinh Viên</h3>
+      <p>Từ 25.000đ – 35.000đ cực kỳ hợp lý</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon">🎁</div>
+      <h3>Khuyến Mãi</h3>
+      <p>Ưu đãi hàng tuần, tích điểm đổi quà</p>
+    </div>
+  </div>
+
+  <!-- SALE BANNER -->
+  <div class="banner-sale">
+    <div>
+      <h2>🔥 Sale Hôm Nay!</h2>
+      <p>Giảm giá đến 20% cho trà sữa matcha & cà phê bơ sữa non</p>
+    </div>
+    <a href="html/menu.html" class="btn btn-primary">Mua Ngay</a>
+  </div>
+
+  <!-- FEATURED PRODUCTS -->
+  <div class="section-title">Nổi Bật Hôm Nay <span class="hot-tag">HOT</span></div>
+  <p class="section-sub">Những ly được yêu thích nhất tại BiBurn</p>
+  <div class="product-grid" id="featured-grid"></div>
+
+  <div style="text-align:center; margin-top: 32px;">
+    <a href="html/menu.html" class="btn btn-primary">Xem Toàn Bộ Thực Đơn →</a>
+  </div>
+</div>
+
+<!-- CART OVERLAY -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <h3>🛒 Giỏ Hàng</h3>
+    <button class="cart-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-footer">
+    <div class="cart-total"><span>Tổng cộng:</span><span id="cartTotalEl">0đ</span></div>
+    <a href="html/order.html" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Thanh Toán</a>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="logo">Bi<span>Burn</span> 🧋</a>
+      <p>Trà sữa – Cà phê – Nước uống sáng tạo từ nguyên liệu tươi ngon nhất.</p>
+    </div>
+    <div>
+      <h4>Menu</h4>
+      <ul>
+        <li><a href="html/menu.html">Trà Sữa</a></li>
+        <li><a href="html/menu.html">Trà Đặc Biệt</a></li>
+        <li><a href="html/menu.html">Cà Phê</a></li>
+        <li><a href="html/menu.html">Nước Tươi / COCO</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Thông Tin</h4>
+      <ul>
+        <li><a href="html/about.html">Về BiBurn</a></li>
+        <li><a href="html/contact.html">Liên Hệ</a></li>
+        <li><a href="html/order.html">Đặt Hàng</a></li>
+        <li><a href="html/policy.html">Chính Sách</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Liên Hệ</h4>
+      <ul>
+        <li><a href="#">📍 123 Đường Nguyễn Huệ</a></li>
+        <li><a href="#">📞 0777 777 777</a></li>
+        <li><a href="#">✉️ khoap1808@gmail.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2024 BiBurn. Đồ Án Kết Thúc Môn – Lập Trình Web</div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/lib_index.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>

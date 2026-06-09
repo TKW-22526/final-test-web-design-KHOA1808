@@ -1,0 +1,86 @@
+.page-hero { background:linear-gradient(135deg,var(--primary-dark),var(--primary)); color:white; padding:56px 20px; text-align:center; }
+    .page-hero h1 { font-family:'Baloo 2',cursive; font-size:2.4rem; margin-bottom:8px; }
+    .page-hero p { opacity:0.85; font-size:1.05rem; }
+
+    .policy-tabs {
+      display:flex; gap:10px; flex-wrap:wrap; margin-bottom:32px;
+    }
+    .policy-tab {
+      padding:9px 20px; border-radius:30px; border:2px solid var(--primary);
+      background:transparent; color:var(--primary); font-weight:700;
+      cursor:pointer; font-family:'Nunito',sans-serif; font-size:0.9rem;
+      transition:all 0.2s;
+    }
+    .policy-tab.active, .policy-tab:hover { background:var(--primary); color:white; }
+
+    .policy-section { display:none; }
+    .policy-section.active { display:block; }
+
+    .policy-card {
+      background:var(--white); border-radius:var(--radius); padding:28px 32px;
+      box-shadow:var(--card-shadow); margin-bottom:20px;
+    }
+    .policy-card h3 {
+      font-family:'Baloo 2',cursive; font-size:1.3rem; color:var(--primary-dark);
+      margin-bottom:12px; display:flex; align-items:center; gap:10px;
+    }
+    .policy-card p, .policy-card li {
+      color:var(--text); font-size:0.95rem; line-height:1.8; margin-bottom:8px;
+    }
+    .policy-card ul { padding-left: 20px; }
+    .policy-card ul li { list-style: disc; }
+
+    /* FAQ accordion */
+    .faq-item {
+      background:var(--white); border-radius:var(--radius); margin-bottom:14px;
+      box-shadow:var(--card-shadow); overflow:hidden;
+    }
+    .faq-question {
+      padding:18px 24px; font-weight:700; font-size:1rem; cursor:pointer;
+      display:flex; justify-content:space-between; align-items:center;
+      color:var(--primary-dark); user-select:none;
+      transition:background 0.2s;
+    }
+    .faq-question:hover { background:var(--bg2); }
+    .faq-question.open { background:var(--bg2); color:var(--primary); }
+    .faq-arrow { font-size:1.2rem; transition:transform 0.3s; }
+    .faq-question.open .faq-arrow { transform:rotate(180deg); }
+    .faq-answer {
+      max-height:0; overflow:hidden; transition:max-height 0.4s ease;
+      padding:0 24px; font-size:0.93rem; line-height:1.8; color:var(--text);
+    }
+    .faq-answer.open { max-height:400px; padding:0 24px 18px; }
+
+    .policy-badge {
+      display:inline-block; background:var(--accent); color:var(--text);
+      font-size:0.75rem; font-weight:700; padding:3px 10px; border-radius:20px;
+      margin-left:8px; vertical-align:middle;
+    }
+
+    .highlight-box {
+      background:linear-gradient(135deg,var(--bg2),#e8f5e2);
+      border-left:4px solid var(--primary); border-radius:0 var(--radius) var(--radius) 0;
+      padding:16px 20px; margin:16px 0; font-size:0.93rem;
+    }
+    .step-list { counter-reset:steps; padding-left:0; list-style:none; }
+    .step-list li {
+      counter-increment:steps; padding:10px 0 10px 48px; position:relative;
+      border-bottom:1px solid #f0f0f0; font-size:0.93rem; line-height:1.6;
+    }
+    .step-list li:last-child { border-bottom:none; }
+    .step-list li::before {
+      content:counter(steps);
+      position:absolute; left:0; top:10px;
+      width:30px; height:30px; border-radius:50%;
+      background:var(--primary); color:white;
+      font-weight:800; font-size:0.85rem;
+      display:flex; align-items:center; justify-content:center;
+    }
+
+    .contact-cta {
+      background:linear-gradient(135deg,var(--primary),var(--primary-light));
+      border-radius:var(--radius); padding:32px; text-align:center; color:white;
+      margin-top:32px;
+    }
+    .contact-cta h3 { font-family:'Baloo 2',cursive; font-size:1.6rem; margin-bottom:10px; }
+    .contact-cta p { opacity:0.9; margin-bottom:20px; }

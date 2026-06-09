@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đặt Hàng – BiBurn</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/style5.css" />
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="../index.html" class="logo">Bi<span>Burn</span> 🧋</a>
+    <ul>
+      <li><a href="../index.html">Trang Chủ</a></li>
+      <li><a href="menu.html">Thực Đơn</a></li>
+      <li><a href="about.html">Về Chúng Tôi</a></li>
+      <li><a href="contact.html">Liên Hệ</a></li>
+      <li><a href="order.html" class="active nav-cart">🛒 Giỏ Hàng <span class="cart-count" style="display:none">0</span></a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="order-hero">
+  <h1>🛒 Đặt Hàng</h1>
+  <p style="opacity:0.85">Điền thông tin giao hàng và xác nhận đơn</p>
+</div>
+
+<div class="section">
+  <!-- SUCCESS -->
+  <div class="success-box" id="successBox">
+    <div class="big">🎉</div>
+    <h2>Đặt Hàng Thành Công!</h2>
+    <p style="color:var(--text-muted); margin-bottom:24px">Cảm ơn bạn! Đơn hàng của bạn đang được chuẩn bị.</p>
+    <a href="menu.html" class="btn btn-primary">Tiếp Tục Mua</a>
+    <a href="orders.html" class="btn btn-accent" style="margin-left:10px">Xem Đơn Hàng</a>
+  </div>
+
+  <!-- EMPTY CART -->
+  <div class="empty-cart" id="emptyCart" style="display:none">
+    <div class="big">🧋</div>
+    <p style="font-size:1.1rem; font-weight:600; margin-bottom:8px">Giỏ hàng trống!</p>
+    <p style="margin-bottom:20px">Hãy thêm đồ uống trước khi đặt hàng nhé.</p>
+    <a href="menu.html" class="btn btn-primary">Xem Thực Đơn</a>
+  </div>
+
+  <!-- ORDER FORM -->
+  <div class="order-layout" id="orderForm">
+    <div class="order-form-box">
+      <div class="box-title">📋 Thông Tin Đặt Hàng</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Họ và Tên *</label>
+          <input type="text" id="custName" placeholder="Nguyễn Văn A">
+        </div>
+        <div class="form-group">
+          <label>Số Điện Thoại *</label>
+          <input type="tel" id="custPhone" placeholder="0777 777 777">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Địa Chỉ Giao Hàng *</label>
+        <input type="text" id="custAddr" placeholder="123 Đường Nguyễn Huệ, TP. Trà Vinh">
+      </div>
+      <div class="form-group">
+        <label>Hình Thức Nhận Hàng</label>
+        <select id="delivType">
+          <option value="delivery">🛵 Giao Hàng Tận Nơi</option>
+          <option value="pickup">🏪 Tự Đến Lấy</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Ghi Chú</label>
+        <textarea id="custNote" rows="3" placeholder="Ít đá, ít đường, không topping..."></textarea>
+      </div>
+      <div class="form-group">
+        <label>Phương Thức Thanh Toán</label>
+        <select id="payMethod">
+          <option value="cash">💵 Tiền Mặt Khi Nhận Hàng</option>
+          <option value="bank">🏦 Chuyển Khoản</option>
+          <option value="momo">📱 MoMo</option>
+        </select>
+      </div>
+      <button class="btn btn-primary" style="width:100%; padding:14px;" onclick="submitOrder()">
+        ✅ Xác Nhận Đặt Hàng
+      </button>
+    </div>
+
+    <div class="order-summary-box">
+      <div class="box-title">🧾 Tóm Tắt Đơn Hàng</div>
+      <div id="summaryItems"></div>
+      <div style="margin-top:16px">
+        <div class="summary-row"><span>Tạm tính</span><span id="subtotal">0đ</span></div>
+        <div class="summary-row"><span>Phí giao hàng</span><span id="shipFee">15.000đ</span></div>
+        <div class="summary-row total"><span>Tổng cộng</span><span id="grandTotal">0đ</span></div>
+      </div>
+      <a href="menu.html" style="display:block;text-align:center;margin-top:16px;color:var(--primary);font-weight:700;text-decoration:none;font-size:0.9rem">← Tiếp tục mua hàng</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><a href="../index.html" class="logo">Bi<span>Burn</span> 🧋</a></div>
+  </div>
+  <div class="footer-bottom">© 2024 BiBurn – Đồ Án Kết Thúc Môn</div>
+</footer>
+
+<script src="../js/data.js"></script>
+<script src="../js/lib5.js"></script>
+<script src="../js/auth.js"></script>
+</body>
+</html>

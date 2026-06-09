@@ -1,0 +1,18 @@
+    .page-hero { background: linear-gradient(135deg,var(--primary-dark),var(--primary)); color:white; padding:40px 20px; text-align:center; }
+    .page-hero h1 { font-family:'Baloo 2',cursive; font-size:2rem; }
+    .order-card { background:var(--white); border-radius:var(--radius); box-shadow:var(--card-shadow); padding:20px; margin-bottom:20px; }
+    .order-card-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; flex-wrap:wrap; gap:8px; }
+    .order-id { font-family:'Baloo 2',cursive; font-size:1.1rem; color:var(--primary-dark); }
+    .order-date { font-size:0.82rem; color:var(--text-muted); }
+    .status-badge { padding:4px 14px; border-radius:20px; font-size:0.8rem; font-weight:700; }
+    .status-pending { background:#fff3cd; color:#856404; }
+    .status-confirmed { background:#d1ecf1; color:#0c5460; }
+    .status-done { background:#d4edda; color:#155724; }
+    .status-cancelled { background:#f8d7da; color:#721c24; }
+    .order-items-list { border-top:1px solid #f0f0f0; margin-top:10px; padding-top:10px; }
+    .mini-item { display:flex; justify-content:space-between; font-size:0.88rem; padding:4px 0; }
+    .order-total-row { display:flex; justify-content:space-between; font-weight:700; border-top:2px solid var(--bg2); margin-top:10px; padding-top:10px; }
+    .order-total-row span:last-child { color:var(--primary); }
+    .empty-orders { text-align:center; padding:60px 20px; color:var(--text-muted); }
+    .empty-orders .big { font-size:3rem; margin-bottom:12px; }
+  

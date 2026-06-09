@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thực Đơn – Bi Burn</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/style4.css" />
+  
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="../index.html" class="logo">Bi<span>Burn</span> 🧋</a>
+    <ul>
+      <li><a href="../index.html">Trang Chủ</a></li>
+      <li><a href="menu.html" class="active">Thực Đơn</a></li>
+      <li><a href="about.html">Về Chúng Tôi</a></li>
+      <li><a href="contact.html">Liên Hệ</a></li>
+      <li><a href="order.html" class="nav-cart">🛒 Giỏ Hàng <span class="cart-count" style="display:none">0</span></a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="menu-hero">
+  <h1>🍹 Thực Đơn BiBurn</h1>
+  <p style="opacity:0.85; margin-bottom:20px">Tất cả đồ uống – pha từ nguyên liệu tươi mỗi ngày</p>
+  <div class="search-bar">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="searchInput" placeholder="Tìm đồ uống..." oninput="filterProducts()">
+  </div>
+</section>
+
+<div class="section">
+  <!-- FILTER TABS -->
+  <div class="category-tabs">
+    <button class="tab-btn active" onclick="filterCat('all', this)">Tất Cả</button>
+    <button class="tab-btn" onclick="filterCat('trasua', this)">🧋 Trà Sữa</button>
+    <button class="tab-btn" onclick="filterCat('tradacbiet', this)">🍃 Trà Đặc Biệt</button>
+    <button class="tab-btn" onclick="filterCat('caphe', this)">☕ Cà Phê</button>
+    <button class="tab-btn" onclick="filterCat('tuoi', this)">🥥 Tươi / COCO</button>
+    <button class="tab-btn" onclick="filterCat('dam', this)">🫧 Đặc Biệt Đậm</button>
+    <button class="tab-btn" onclick="filterCat('sale', this)">🔥 Đang Giảm Giá</button>
+  </div>
+
+  <div id="menu-container"></div>
+  <div id="no-result">😢 Không tìm thấy sản phẩm phù hợp</div>
+</div>
+
+<!-- CART OVERLAY -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <h3>🛒 Giỏ Hàng</h3>
+    <button class="cart-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-footer">
+    <div class="cart-total"><span>Tổng:</span><span id="cartTotalEl">0đ</span></div>
+    <a href="order.html" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Thanh Toán</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="../index.html" class="logo">Bi<span>Burn</span> 🧋</a>
+      <p>Trà sữa – Cà phê – Nước uống sáng tạo.</p>
+    </div>
+    <div><h4>Menu</h4><ul>
+      <li><a href="menu.html">Xem tất cả</a></li>
+      <li><a href="order.html">Đặt hàng</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">© 2024 BiBurn – Đồ Án Kết Thúc Môn</div>
+</footer>
+
+<script src="../js/data.js"></script>
+<script src="../js/lib4.js"></script>
+<script src="../js/auth.js"></script>
+</body>
+</html>

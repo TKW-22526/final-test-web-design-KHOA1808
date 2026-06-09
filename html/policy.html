@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chính Sách & FAQ – BiBurn</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/style7.css" />
+  
+</head>
+<body>
+<header>
+  <nav>
+    <a href="../index.html" class="logo">Bi<span>Burn</span> 🧋</a>
+    <ul>
+      <li><a href="../index.html">Trang Chủ</a></li>
+      <li><a href="menu.html">Thực Đơn</a></li>
+      <li><a href="about.html">Về Chúng Tôi</a></li>
+      <li><a href="contact.html">Liên Hệ</a></li>
+      <li><a href="order.html" class="nav-cart">🛒 Giỏ Hàng <span class="cart-count" style="display:none">0</span></a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="page-hero">
+  <h1>📋 Chính Sách & FAQ</h1>
+  <p>Những thông tin quan trọng bạn cần biết khi mua hàng tại BiBurn</p>
+</div>
+
+<div class="section">
+  <div class="policy-tabs">
+    <button class="policy-tab active" onclick="showTab('order',this)">🛒 Đặt Hàng</button>
+    <button class="policy-tab" onclick="showTab('payment',this)">💳 Thanh Toán</button>
+    <button class="policy-tab" onclick="showTab('delivery',this)">🚴 Giao Hàng</button>
+    <button class="policy-tab" onclick="showTab('return',this)">🔄 Đổi Trả</button>
+    <button class="policy-tab" onclick="showTab('faq',this)">❓ FAQ</button>
+  </div>
+
+  <!-- TAB: ĐẶT HÀNG -->
+  <div class="policy-section active" id="tab-order">
+    <div class="policy-card">
+      <h3>📝 Cách Đặt Hàng Tại BiBurn</h3>
+      <ul class="step-list">
+        <li>Vào trang <strong>Thực Đơn</strong>, chọn đồ uống bạn thích và nhấn <em>+ Thêm</em> vào giỏ.</li>
+        <li>Nhấn vào icon 🛒 trên thanh điều hướng để xem giỏ hàng. Kiểm tra số lượng và điều chỉnh nếu cần.</li>
+        <li>Nhấn <strong>Thanh Toán</strong>, điền đầy đủ thông tin: tên, số điện thoại, địa chỉ giao hàng.</li>
+        <li>Chọn phương thức thanh toán và nhấn <strong>Đặt Hàng</strong>. Bạn sẽ nhận mã đơn hàng ngay lập tức.</li>
+        <li>Theo dõi trạng thái đơn hàng tại trang <a href="orders.html" style="color:var(--primary)">Đơn Hàng Của Tôi</a>.</li>
+      </ul>
+    </div>
+    <div class="policy-card">
+      <h3>⏰ Thời Gian Hoạt Động</h3>
+      <p>BiBurn phục vụ đặt hàng online từ <strong>7:00 – 22:00</strong> mỗi ngày trong tuần.</p>
+      <p>Đơn hàng đặt sau 22:00 sẽ được xử lý vào sáng hôm sau từ 7:00.</p>
+      <div class="highlight-box">
+        🎉 <strong>Tip:</strong> Đặt trước giờ cao điểm (11:00 – 13:00 và 17:00 – 19:00) để nhận hàng nhanh hơn!
+      </div>
+    </div>
+    <div class="policy-card">
+      <h3>✏️ Chỉnh Sửa & Hủy Đơn</h3>
+      <p>Bạn có thể hủy hoặc chỉnh sửa đơn hàng trong vòng <strong>5 phút</strong> sau khi đặt, khi đơn chưa được xác nhận.</p>
+      <p>Sau khi đơn có trạng thái <em>Đã Xác Nhận</em>, vui lòng liên hệ trực tiếp qua số điện thoại để được hỗ trợ.</p>
+    </div>
+  </div>
+
+  <!-- TAB: THANH TOÁN -->
+  <div class="policy-section" id="tab-payment">
+    <div class="policy-card">
+      <h3>💳 Phương Thức Thanh Toán</h3>
+      <ul>
+        <li>💵 <strong>Tiền mặt</strong> khi nhận hàng (COD) – áp dụng cho tất cả đơn hàng.</li>
+        <li>📱 <strong>Chuyển khoản ngân hàng</strong> – quét mã QR sau khi đặt hàng.</li>
+        <li>🔵 <strong>Ví MoMo</strong> – thanh toán nhanh, nhận ngay ưu đãi 5% cho lần đầu.</li>
+        <li>💚 <strong>ZaloPay / ViettelMoney</strong> – hỗ trợ đầy đủ các ví phổ biến.</li>
+      </ul>
+    </div>
+    <div class="policy-card">
+      <h3>🧾 Hóa Đơn & Khuyến Mãi</h3>
+      <p>Hóa đơn điện tử sẽ được gửi về số điện thoại sau khi đơn hoàn thành.</p>
+      <p>Mã giảm giá nhập tại bước thanh toán. Mỗi đơn chỉ áp dụng <strong>1 mã</strong>.</p>
+      <div class="highlight-box">
+        🎁 Mã giảm giá hiện tại: <strong>BiBurn10</strong> – giảm 10% đơn từ 50.000đ. Có hiệu lực đến 30/6/2026.
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB: GIAO HÀNG -->
+  <div class="policy-section" id="tab-delivery">
+    <div class="policy-card">
+      <h3>🚴 Chính Sách Giao Hàng</h3>
+      <ul>
+        <li>Phạm vi giao hàng: trong bán kính <strong>5km</strong> từ cửa hàng.</li>
+        <li>Thời gian giao: <strong>15 – 30 phút</strong> tùy khu vực và khung giờ.</li>
+        <li>Phí ship: <strong>15.000đ</strong> / đơn. Miễn phí cho đơn từ <strong>100.000đ</strong> trở lên.</li>
+      </ul>
+    </div>
+    <div class="policy-card">
+      <h3>📦 Đóng Gói & Bảo Quản</h3>
+      <p>Tất cả đồ uống được đóng gói kỹ, có hộp giữ lạnh/giữ nhiệt cho đơn từ 2 ly trở lên.</p>
+      <p>Đồ uống tươi cần dùng ngay trong vòng <strong>30 phút</strong> sau khi nhận để đảm bảo chất lượng tốt nhất.</p>
+      <div class="highlight-box">
+        🧊 <strong>Lưu ý:</strong> Trà sữa có trân châu nên uống ngay khi nhận, tránh để lâu vì trân châu có thể bị cứng.
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB: ĐỔI TRẢ -->
+  <div class="policy-section" id="tab-return">
+    <div class="policy-card">
+      <h3>🔄 Chính Sách Đổi / Hoàn Tiền</h3>
+      <p>BiBurn cam kết chất lượng sản phẩm. Nếu bạn nhận được đồ uống không đúng yêu cầu, chúng tôi sẽ hỗ trợ:</p>
+      <ul>
+        <li>✅ Làm lại sản phẩm <strong>miễn phí</strong> nếu lỗi từ phía cửa hàng (sai order, thiếu topping...).</li>
+        <li>✅ Hoàn 100% tiền nếu không thể giao hàng do lỗi hệ thống.</li>
+        <li>⚠️ Không áp dụng đổi trả nếu khách hàng đặt sai hoặc đồ uống đã được sử dụng một phần.</li>
+      </ul>
+    </div>
+    <div class="policy-card">
+      <h3>📞 Phản Ánh & Khiếu Nại</h3>
+      <p>Liên hệ với chúng tôi trong vòng <strong>1 giờ</strong> sau khi nhận hàng nếu có vấn đề:</p>
+      <ul>
+        <li>📞 Hotline: <strong>0777 777 777</strong> (7:00 – 22:00)</li>
+        <li>✉️ Email: <a href="mailto:khoap1808@gmail.com" style="color:var(--primary)">khoap1808@gmail.com</a></li>
+        <li>💬 Chat trực tiếp tại trang <a href="contact.html" style="color:var(--primary)">Liên Hệ</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- TAB: FAQ -->
+  <div class="policy-section" id="tab-faq">
+    <div id="faq-list"></div>
+  </div>
+
+  <div class="contact-cta">
+    <h3>Còn Thắc Mắc?</h3>
+    <p>Đội ngũ hỗ trợ BiBurn luôn sẵn sàng giải đáp mọi câu hỏi của bạn.</p>
+    <a href="contact.html" class="btn btn-white">💬 Liên Hệ Ngay</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="../index.html" class="logo">Bi<span>Burn</span> 🧋</a>
+      <p>Trà sữa – Cà phê – Nước uống sáng tạo từ nguyên liệu tươi ngon nhất.</p>
+    </div>
+    <div><h4>Menu</h4><ul>
+      <li><a href="menu.html">Thực Đơn</a></li>
+      <li><a href="order.html">Đặt Hàng</a></li>
+    </ul></div>
+    <div><h4>Thông Tin</h4><ul>
+      <li><a href="about.html">Về BiBurn</a></li>
+      <li><a href="policy.html">Chính Sách</a></li>
+      <li><a href="contact.html">Liên Hệ</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">© 2024 BiBurn – Đồ Án Kết Thúc Môn</div>
+</footer>
+
+<script src="../js/data.js"></script>
+<script src="../js/lib7.js"></script>
+<script src="../js/auth.js"></script>
+</body>
+</html>

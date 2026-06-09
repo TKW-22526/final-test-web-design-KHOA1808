@@ -1,0 +1,171 @@
+    .breadcrumb { font-size:0.85rem; color:var(--text-muted); padding: 16px 0 0; }
+    .breadcrumb a { color:var(--primary); text-decoration:none; }
+    .breadcrumb a:hover { text-decoration:underline; }
+    .product-detail-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+      margin: 32px 0 48px;
+    }
+    @media(max-width:768px){ .product-detail-wrap{ grid-template-columns:1fr; gap:24px; } }
+
+    .product-big-img {
+      background: linear-gradient(135deg, var(--bg2), var(--primary-light));
+      border-radius: calc(var(--radius) * 1.5);
+      height: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8rem;
+      box-shadow: var(--card-shadow);
+      position: relative;
+    }
+    .product-big-badge {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      background: var(--red);
+      color: white;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: 20px;
+    }
+    .product-big-badge.new-badge { background: var(--accent); color: var(--text); }
+    .product-big-badge.out-badge { background: #aaa; }
+    .product-detail-info {}
+    .detail-category {
+      display: inline-block;
+      background: var(--bg2);
+      color: var(--primary);
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .detail-name {
+      font-family: 'Baloo 2', cursive;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+    .detail-desc { color: var(--text-muted); font-size: 1rem; line-height: 1.7; margin-bottom: 20px; }
+    .detail-price-row { display:flex; align-items:baseline; gap: 12px; margin-bottom: 24px; }
+    .detail-price { font-family:'Baloo 2',cursive; font-size: 2.2rem; font-weight: 800; color: var(--primary); }
+    .detail-price-old { font-size: 1.1rem; color: var(--text-muted); text-decoration: line-through; }
+    .detail-sale-tag {
+      background: var(--red); color: white;
+      font-size: 0.85rem; font-weight: 700;
+      padding: 4px 12px; border-radius: 20px;
+    }
+
+    .size-select-label { font-weight: 700; margin-bottom: 10px; color: var(--text); }
+    .size-btns { display:flex; gap:10px; margin-bottom: 24px; flex-wrap:wrap; }
+    .size-btn {
+      padding: 8px 22px;
+      border-radius: 30px;
+      border: 2px solid var(--primary);
+      background: transparent;
+      color: var(--primary);
+      font-weight: 700;
+      cursor: pointer;
+      font-family:'Nunito',sans-serif;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+    .size-btn.selected, .size-btn:hover { background: var(--primary); color: white; }
+
+    .sugar-label { font-weight: 700; margin-bottom: 10px; color: var(--text); }
+    .sugar-btns { display:flex; gap:8px; margin-bottom: 28px; flex-wrap:wrap; }
+    .sugar-btn {
+      padding: 6px 16px;
+      border-radius: 30px;
+      border: 2px solid #ddd;
+      background: transparent;
+      color: var(--text-muted);
+      font-weight: 600;
+      cursor: pointer;
+      font-family:'Nunito',sans-serif;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+    }
+    .sugar-btn.selected, .sugar-btn:hover { border-color: var(--primary); color: var(--primary); background: var(--bg2); }
+
+    .qty-row { display:flex; align-items:center; gap: 16px; margin-bottom: 24px; }
+    .qty-row label { font-weight: 700; color: var(--text); }
+    .qty-control { display:flex; align-items:center; gap: 10px; }
+    .qty-control button {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 2px solid var(--primary);
+      background: none;
+      color: var(--primary);
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+      display:flex; align-items:center; justify-content:center;
+      transition: all 0.2s;
+    }
+    .qty-control button:hover { background: var(--primary); color: white; }
+    .qty-control span { font-size: 1.1rem; font-weight: 700; min-width: 28px; text-align:center; }
+
+    .btn-add-detail {
+      width: 100%;
+      padding: 14px;
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: 30px;
+      border: none;
+      background: var(--primary);
+      color: white;
+      cursor: pointer;
+      font-family:'Nunito',sans-serif;
+      transition: all 0.2s;
+      margin-bottom: 12px;
+    }
+    .btn-add-detail:hover { background: var(--primary-dark); transform: translateY(-2px); }
+    .btn-add-detail:disabled { background: #ccc; cursor: not-allowed; transform: none; }
+    .btn-order-detail {
+      width: 100%;
+      padding: 14px;
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: 30px;
+      border: 2px solid var(--primary);
+      background: transparent;
+      color: var(--primary);
+      cursor: pointer;
+      font-family:'Nunito',sans-serif;
+      transition: all 0.2s;
+      text-align: center;
+      display: block;
+      text-decoration: none;
+    }
+    .btn-order-detail:hover { background: var(--primary); color: white; }
+
+    .product-info-table {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      box-shadow: var(--card-shadow);
+      margin-bottom: 16px;
+    }
+    .product-info-table h4 { font-family:'Baloo 2',cursive; color:var(--primary-dark); margin-bottom:12px; font-size:1.1rem; }
+    .info-row { display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #f0f0f0; font-size:0.9rem; }
+    .info-row:last-child { border-bottom:none; }
+    .info-row .lbl { color:var(--text-muted); }
+    .info-row .val { font-weight:600; color:var(--text); }
+
+    .related-title { font-family:'Baloo 2',cursive; font-size:1.6rem; font-weight:800; color:var(--primary-dark); margin-bottom:20px; }
+    .out-notice {
+      background: #fff3f3; border: 1.5px solid #ffcccc;
+      border-radius: var(--radius); padding: 14px 20px;
+      color: #c0392b; font-weight: 600; font-size:0.95rem;
+      margin-bottom: 16px;
+    }

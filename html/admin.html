@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin – BiBurn</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/style2.css" />
+  
+</head>
+<body>
+
+<!-- LOGIN SCREEN -->
+<div class="login-screen" id="loginScreen">
+  <div class="login-box">
+    <div style="font-size:3rem; margin-bottom:8px">🔐</div>
+    <h2>Admin BiBurn</h2>
+    <p>Đăng nhập để quản lý cửa hàng</p>
+    <div class="form-group"><label>Tên Đăng Nhập</label><input type="text" id="loginUser" placeholder="Nhập tên đăng nhập..."></div>
+    <div class="form-group"><label>Mật Khẩu</label><input type="password" id="loginPass" placeholder="••••••" onkeydown="if(event.key==='Enter')doLogin()"></div>
+    <button class="btn btn-primary" style="width:100%;padding:12px;margin-top:4px" onclick="doLogin()">Đăng Nhập</button>
+    <div id="loginError" style="color:var(--red);font-size:0.83rem;margin-top:10px;display:none">Sai tên đăng nhập hoặc mật khẩu!</div>
+  </div>
+</div>
+
+<!-- ADMIN LAYOUT -->
+<div class="admin-layout" id="adminLayout" style="display:none">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">Bi<span>Burn</span> 🧋<br><span style="font-size:0.7rem;opacity:0.6;font-family:Nunito,sans-serif;font-weight:400">Bảng Điều Khiển</span></div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section">Tổng Quan</div>
+      <a onclick="switchPanel('dashboard')" class="active" id="nav-dashboard"><span class="nav-icon">📊</span> Tổng Quan</a>
+      <div class="sidebar-section">Quản Lý</div>
+      <a onclick="switchPanel('products')" id="nav-products"><span class="nav-icon">🧋</span> Sản Phẩm</a>
+      <a onclick="switchPanel('orders')" id="nav-orders"><span class="nav-icon">📋</span> Đơn Hàng</a>
+      <a onclick="switchPanel('promo')" id="nav-promo"><span class="nav-icon">🔥</span> Khuyến Mãi</a>
+      <div class="sidebar-section">Hệ Thống</div>
+      <a href="../index.html" target="_blank"><span class="nav-icon">🌐</span> Xem Website</a>
+      <a onclick="doLogout()" style="color:rgba(255,100,100,0.8)"><span class="nav-icon">🚪</span> Đăng Xuất</a>
+    </nav>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="admin-main">
+    <div class="admin-topbar">
+      <h2 id="topbarTitle">📊 Tổng Quan</h2>
+      <div class="topbar-actions">
+        <span style="font-size:0.85rem;color:var(--text-muted)">👤 Admin</span>
+      </div>
+    </div>
+
+    <div class="admin-content">
+
+      <!-- DASHBOARD PANEL -->
+      <div class="panel active" id="panel-dashboard">
+        <div class="stats-grid" id="statsGrid"></div>
+        <div class="panel-card">
+          <div class="panel-header"><h3>📋 Đơn Hàng Gần Đây</h3></div>
+          <div style="overflow-x:auto">
+            <table class="data-table" id="recentOrdersTable">
+              <thead><tr><th>Mã Đơn</th><th>Khách Hàng</th><th>Tổng Tiền</th><th>Trạng Thái</th><th>Thời Gian</th></tr></thead>
+              <tbody id="recentOrdersBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRODUCTS PANEL -->
+      <div class="panel" id="panel-products">
+        <div class="panel-card">
+          <div class="panel-header">
+            <h3>🧋 Quản Lý Sản Phẩm</h3>
+            <button class="btn btn-primary btn-sm" onclick="openAddProduct()" style="padding:8px 16px">+ Thêm Sản Phẩm</button>
+          </div>
+          <div style="padding:16px 24px; border-bottom:1px solid #f0f0f0; display:flex; gap:10px; flex-wrap:wrap; align-items:center">
+            <input type="text" id="productSearch" placeholder="🔍 Tìm sản phẩm..." oninput="renderProductsTable()" style="padding:8px 14px;border:2px solid #e0e0e0;border-radius:8px;font-size:0.88rem;font-family:Nunito,sans-serif;outline:none;min-width:200px">
+            <select id="catFilter" onchange="renderProductsTable()" style="padding:8px 12px;border:2px solid #e0e0e0;border-radius:8px;font-size:0.88rem;font-family:Nunito,sans-serif;outline:none">
+              <option value="">Tất cả danh mục</option>
+              <option value="trasua">Trà Sữa</option>
+              <option value="tradacbiet">Trà Đặc Biệt</option>
+              <option value="caphe">Cà Phê</option>
+              <option value="tuoi">Nước Tươi</option>
+              <option value="dam">Đặc Biệt Đậm</option>
+            </select>
+          </div>
+          <div style="overflow-x:auto">
+            <table class="data-table">
+              <thead><tr><th>Icon</th><th>Tên Sản Phẩm</th><th>Danh Mục</th><th>Giá Gốc</th><th>Giảm Giá</th><th>Giá Bán</th><th>Trạng Thái</th><th>Thao Tác</th></tr></thead>
+              <tbody id="productsTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ORDERS PANEL -->
+      <div class="panel" id="panel-orders">
+        <div class="panel-card">
+          <div class="panel-header">
+            <h3>📋 Quản Lý Đơn Hàng</h3>
+            <select id="orderStatusFilter" onchange="renderOrdersTable()" style="padding:8px 12px;border:2px solid #e0e0e0;border-radius:8px;font-size:0.88rem;font-family:Nunito,sans-serif;outline:none">
+              <option value="">Tất cả</option>
+              <option value="pending">Đang Chờ</option>
+              <option value="confirmed">Đã Xác Nhận</option>
+              <option value="done">Hoàn Thành</option>
+              <option value="cancelled">Đã Hủy</option>
+            </select>
+          </div>
+          <div style="overflow-x:auto">
+            <table class="data-table">
+              <thead><tr><th>Mã Đơn</th><th>Khách Hàng</th><th>SĐT</th><th>Sản Phẩm</th><th>Tổng</th><th>Trạng Thái</th><th>Thời Gian</th><th>Thao Tác</th></tr></thead>
+              <tbody id="ordersTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROMO PANEL -->
+      <div class="panel" id="panel-promo">
+        <div class="panel-card" style="margin-bottom:24px">
+          <div class="panel-header"><h3>🔥 Thiết Lập Khuyến Mãi Nhanh</h3></div>
+          <div style="padding:24px">
+            <p style="color:var(--text-muted);margin-bottom:20px;font-size:0.9rem">Chọn sản phẩm và áp dụng % giảm giá hàng loạt:</p>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px;align-items:flex-end">
+              <div>
+                <label style="display:block;font-weight:600;font-size:0.88rem;margin-bottom:5px">Danh Mục</label>
+                <select id="promoCat" style="padding:9px 12px;border:2px solid #e0e0e0;border-radius:8px;font-size:0.88rem;font-family:Nunito,sans-serif;outline:none">
+                  <option value="">Tất cả sản phẩm</option>
+                  <option value="trasua">Trà Sữa</option>
+                  <option value="tradacbiet">Trà Đặc Biệt</option>
+                  <option value="caphe">Cà Phê</option>
+                  <option value="tuoi">Nước Tươi</option>
+                  <option value="dam">Đặc Biệt Đậm</option>
+                </select>
+              </div>
+              <div>
+                <label style="display:block;font-weight:600;font-size:0.88rem;margin-bottom:5px">% Giảm Giá</label>
+                <input type="number" id="promoPercent" min="0" max="100" value="10" style="padding:9px 12px;border:2px solid #e0e0e0;border-radius:8px;font-size:0.88rem;font-family:Nunito,sans-serif;outline:none;width:100px">
+              </div>
+              <button class="btn btn-accent" onclick="applyPromo()" style="padding:9px 20px">✅ Áp Dụng</button>
+              <button class="btn btn-outline" onclick="clearPromo()" style="padding:9px 20px;border:2px solid #e0e0e0;color:var(--text);background:white">❌ Xóa Khuyến Mãi</button>
+            </div>
+            <div style="background:var(--bg2);border-radius:10px;padding:14px;font-size:0.85rem;color:var(--primary-dark)">
+              💡 <strong>Tip:</strong> Giảm giá 0% = Xóa khuyến mãi. Thay đổi sẽ hiển thị ngay trên website.
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-card">
+          <div class="panel-header"><h3>📊 Sản Phẩm Đang Giảm Giá</h3></div>
+          <div style="overflow-x:auto">
+            <table class="data-table">
+              <thead><tr><th>Icon</th><th>Sản Phẩm</th><th>Giá Gốc</th><th>Giảm</th><th>Giá Bán</th><th>Điều Chỉnh</th></tr></thead>
+              <tbody id="promoTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCT MODAL -->
+<div class="modal-overlay" id="productModal">
+  <div class="modal">
+    <h3 id="modalTitle">➕ Thêm Sản Phẩm</h3>
+    <input type="hidden" id="editId">
+    <div class="form-group"><label>Tên Sản Phẩm *</label><input type="text" id="editName" placeholder="Trà Sữa Trân Châu"></div>
+    <div class="form-group"><label>Mô Tả</label><textarea id="editDesc" rows="2" placeholder="Mô tả ngắn về sản phẩm..."></textarea></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div class="form-group"><label>Icon (emoji)</label><input type="text" id="editIcon" placeholder="🧋" maxlength="4"></div>
+      <div class="form-group"><label>Danh Mục</label>
+        <select id="editCat">
+          <option value="trasua">Trà Sữa</option>
+          <option value="tradacbiet">Trà Đặc Biệt</option>
+          <option value="caphe">Cà Phê</option>
+          <option value="tuoi">Nước Tươi / COCO</option>
+          <option value="dam">Đặc Biệt Đậm</option>
+        </select>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px">
+      <div class="form-group"><label>Giá (đ) *</label><input type="number" id="editPrice" placeholder="29000" min="0"></div>
+      <div class="form-group"><label>% Giảm Giá</label><input type="number" id="editSale" placeholder="0" min="0" max="100"></div>
+      <div class="form-group"><label>Còn Hàng</label>
+        <select id="editAvailable">
+          <option value="true">✅ Còn hàng</option>
+          <option value="false">❌ Hết hàng</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group"><label>Sản Phẩm Mới</label>
+      <select id="editNew">
+        <option value="false">Không</option>
+        <option value="true">✨ Có (hiển thị badge MỚI)</option>
+      </select>
+    </div>
+    <div class="modal-actions">
+      <button class="btn" style="background:#e0e0e0;color:#333" onclick="closeModal()">Hủy</button>
+      <button class="btn btn-primary" onclick="saveProduct()">💾 Lưu</button>
+    </div>
+  </div>
+</div>
+
+<script src="../js/data.js"></script>
+<script src="../js/lib2.js"></script>
+<script src="../js/auth.js"></script>
+</body>
+</html>

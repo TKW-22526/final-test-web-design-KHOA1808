@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng Nhập – BiBurn</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .login-wrapper {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--bg2) 0%, var(--bg) 100%);
+      padding: 20px;
+    }
+    .login-card {
+      background: var(--white);
+      border-radius: 24px;
+      box-shadow: 0 8px 40px rgba(74,124,63,0.15);
+      padding: 48px 40px 40px;
+      width: 100%;
+      max-width: 420px;
+      text-align: center;
+    }
+    .login-logo {
+      font-family: 'Baloo 2', cursive;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+    .login-logo span { color: var(--accent); }
+    .login-sub {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 32px;
+    }
+    .login-avatar-preview {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary-light), var(--primary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      margin: 0 auto 28px;
+      box-shadow: 0 4px 16px rgba(74,124,63,0.2);
+    }
+    .form-group {
+      text-align: left;
+      margin-bottom: 18px;
+    }
+    .form-group label {
+      display: block;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid #e0e0e0;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-family: 'Nunito', sans-serif;
+      transition: border 0.2s;
+      background: var(--bg);
+    }
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--primary);
+      background: white;
+    }
+    .btn-login {
+      width: 100%;
+      padding: 14px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 14px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      font-family: 'Nunito', sans-serif;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 8px;
+    }
+    .btn-login:hover { background: var(--primary-dark); transform: translateY(-1px); }
+    .login-hint {
+      margin-top: 16px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+    .login-back {
+      display: inline-block;
+      margin-top: 20px;
+      color: var(--primary);
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    .login-back:hover { text-decoration: underline; }
+    .error-msg {
+      background: #fff0f0;
+      color: var(--red);
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      display: none;
+      margin-bottom: 14px;
+    }
+    .social-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 20px 0;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+    .social-divider::before, .social-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #e0e0e0;
+    }
+    .btn-demo {
+      width: 100%;
+      padding: 12px;
+      background: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+      border-radius: 14px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      font-family: 'Nunito', sans-serif;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-demo:hover { background: var(--bg2); }
+  </style>
+</head>
+<body>
+<header>
+  <nav>
+    <a href="../index.html" class="logo">Bi<span>Burn</span> 🧋</a>
+    <ul>
+      <li><a href="../index.html">Trang Chủ</a></li>
+      <li><a href="menu.html">Thực Đơn</a></li>
+      <li><a href="about.html">Về Chúng Tôi</a></li>
+      <li><a href="contact.html">Liên Hệ</a></li>
+      <li><a href="order.html" class="nav-cart">🛒 Giỏ Hàng <span class="cart-count" style="display:none">0</span></a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="login-wrapper">
+  <div class="login-card">
+    <div class="login-avatar-preview">🧋</div>
+    <div class="login-logo">Bi<span>Burn</span></div>
+    <div class="login-sub">Đăng nhập để đặt hàng nhanh hơn ✨</div>
+
+    <div class="error-msg" id="errorMsg">❌ Tên đăng nhập hoặc mật khẩu không đúng!</div>
+
+    <div class="form-group">
+      <label>Tên đăng nhập</label>
+      <input type="text" id="loginUser" placeholder="Nhập tên đăng nhập..." onkeydown="if(event.key==='Enter')doLogin()">
+    </div>
+    <div class="form-group">
+      <label>Mật khẩu</label>
+      <input type="password" id="loginPass" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()">
+    </div>
+
+    <button class="btn-login" onclick="doLogin()">🔑 Đăng Nhập</button>
+
+    <div class="social-divider">hoặc thử nhanh</div>
+    <button class="btn-demo" onclick="fillDemo()">🎯 Dùng tài khoản demo</button>
+
+    <div class="login-hint" style="line-height:1.8">
+      Demo khách: <strong>user</strong> / <strong>123456</strong><br>
+      Admin: <strong>admin</strong> / <strong>1234</strong>
+    </div>
+    <a class="login-back" href="../index.html">← Quay về trang chủ</a>
+  </div>
+</div>
+
+<script>
+// Danh sách tài khoản (web tĩnh – lưu trong JS)
+const ACCOUNTS = [
+  { username: 'admin', password: '1234',    name: 'Admin',       role: 'admin' },
+  { username: 'user',  password: '123456',  name: 'Khách Demo',  role: 'user'  }
+];
+
+function fillDemo() {
+  document.getElementById('loginUser').value = 'user';
+  document.getElementById('loginPass').value = '123456';
+  document.getElementById('errorMsg').style.display = 'none';
+}
+
+function doLogin() {
+  const u = document.getElementById('loginUser').value.trim();
+  const p = document.getElementById('loginPass').value.trim();
+  const err = document.getElementById('errorMsg');
+
+  if (!u || !p) {
+    err.textContent = '❌ Vui lòng nhập tên đăng nhập và mật khẩu!';
+    err.style.display = 'block';
+    return;
+  }
+
+  const found = ACCOUNTS.find(a => a.username === u && a.password === p);
+  if (found) {
+    localStorage.setItem('bb_user', JSON.stringify({
+      name: found.name,
+      username: found.username,
+      role: found.role,
+      avatar: '👤'
+    }));
+    const redirect = new URLSearchParams(window.location.search).get('from') || '../index.html';
+    window.location.href = redirect;
+  } else {
+    err.textContent = '❌ Tên đăng nhập hoặc mật khẩu không đúng!';
+    err.style.display = 'block';
+    document.getElementById('loginPass').value = '';
+    document.getElementById('loginPass').focus();
+  }
+}
+</script>
+<script src="../js/auth.js"></script>
+</body>
+</html>

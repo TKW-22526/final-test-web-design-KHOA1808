@@ -1,0 +1,21 @@
+ 
+    .page-hero{background:linear-gradient(135deg,var(--primary-dark),var(--primary));color:white;padding:48px 20px;text-align:center;}
+    .page-hero h1{font-family:'Baloo 2',cursive;font-size:2.2rem;}
+    .contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
+    @media(max-width:768px){.contact-layout{grid-template-columns:1fr;}}
+    .contact-box{background:var(--white);border-radius:var(--radius);box-shadow:var(--card-shadow);padding:28px;}
+    .box-title{font-family:'Baloo 2',cursive;font-size:1.3rem;color:var(--primary-dark);margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid var(--bg2);}
+    .form-group{margin-bottom:14px;}
+    .form-group label{display:block;font-weight:600;font-size:0.88rem;margin-bottom:5px;}
+    .form-group input,.form-group textarea{width:100%;padding:10px 14px;border:2px solid #e0e0e0;border-radius:10px;font-size:0.92rem;font-family:'Nunito',sans-serif;outline:none;transition:border 0.2s;}
+    .form-group input:focus,.form-group textarea:focus{border-color:var(--primary);}
+    .info-item{display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid #f0f0f0;}
+    .info-item:last-child{border-bottom:none;}
+    .info-icon{font-size:1.6rem;min-width:36px;}
+    .info-item h4{font-weight:700;margin-bottom:3px;}
+    .info-item p{font-size:0.88rem;color:var(--text-muted);}
+    .map-placeholder{border-radius:var(--radius);overflow:hidden;margin-top:20px;}
+    .hours-table{width:100%;border-collapse:collapse;margin-top:8px;}
+    .hours-table td{padding:7px 0;font-size:0.88rem;border-bottom:1px solid #f5f5f5;}
+    .hours-table td:first-child{font-weight:600;}
+    .hours-table td:last-child{text-align:right;color:var(--primary);}
