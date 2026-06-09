@@ -176,12 +176,16 @@ Sinh viên cập nhật thông tin cá nhân tại đây:
 
 ```text
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> b61cfd9af9fd5d0c9703f80cd078b900e9a50f86
 Họ và tên:
 Mã số sinh viên:
 Lớp:
 Tên đề tài:
 Liên kết GitHub repository:
 Liên kết GitHub Pages:
+<<<<<<< HEAD
 =======
 Họ và tên: Phạm Tuấn Kha
 Mã số sinh viên: 110124095
@@ -190,4 +194,6 @@ Tên đề tài: BIBURN-WEBSITE ĐẶT TRÀ SỮA VÀ CÀ PHÊ TRỰC TUYẾN
 Liên kết GitHub repository: https://github.com/TKW-22526/final-test-web-design-KHOA1808.git
 Liên kết GitHub Pages: https://tkw-22526.github.io/final-test-web-design-KHOA1808/
 >>>>>>> 627dcc6 (Update)
+=======
+>>>>>>> b61cfd9af9fd5d0c9703f80cd078b900e9a50f86
 ```
