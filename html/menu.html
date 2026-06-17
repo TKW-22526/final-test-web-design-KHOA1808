@@ -6,7 +6,92 @@
   <title>Thực Đơn – Bi Burn</title>
   <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/style4.css" />
-  
+  <style>
+    /* ===== PAGE SWITCHER TABS (Thực Đơn / Chính Sách) ===== */
+    .page-switcher {
+      display: flex;
+      gap: 0;
+      margin-bottom: 28px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 2px solid var(--primary);
+      width: fit-content;
+    }
+    .page-switch-btn {
+      padding: 10px 28px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      font-family: 'Nunito', sans-serif;
+      background: transparent;
+      color: var(--primary);
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .page-switch-btn.active {
+      background: var(--primary);
+      color: white;
+    }
+    .page-switch-btn:not(.active):hover { background: var(--bg2); }
+
+    /* ===== POLICY STYLES (nhúng từ style7.css) ===== */
+    .policy-tabs { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:32px; }
+    .policy-tab {
+      padding:9px 20px; border-radius:30px; border:2px solid var(--primary);
+      background:transparent; color:var(--primary); font-weight:700;
+      cursor:pointer; font-family:'Nunito',sans-serif; font-size:0.9rem; transition:all 0.2s;
+    }
+    .policy-tab.active, .policy-tab:hover { background:var(--primary); color:white; }
+    .policy-section { display:none; }
+    .policy-section.active { display:block; }
+    .policy-card {
+      background:var(--white); border-radius:var(--radius); padding:28px 32px;
+      box-shadow:var(--card-shadow); margin-bottom:20px;
+    }
+    .policy-card h3 {
+      font-family:'Baloo 2',cursive; font-size:1.3rem; color:var(--primary-dark);
+      margin-bottom:12px;
+    }
+    .policy-card p, .policy-card li { color:var(--text); font-size:0.95rem; line-height:1.8; margin-bottom:8px; }
+    .policy-card ul { padding-left:20px; }
+    .policy-card ul li { list-style:disc; }
+    .highlight-box {
+      background:linear-gradient(135deg,var(--bg2),#e8f5e2);
+      border-left:4px solid var(--primary); border-radius:0 var(--radius) var(--radius) 0;
+      padding:16px 20px; margin:16px 0; font-size:0.93rem;
+    }
+    .step-list { counter-reset:steps; padding-left:0; list-style:none; }
+    .step-list li {
+      counter-increment:steps; padding:10px 0 10px 48px; position:relative;
+      border-bottom:1px solid #f0f0f0; font-size:0.93rem; line-height:1.6;
+    }
+    .step-list li:last-child { border-bottom:none; }
+    .step-list li::before {
+      content:counter(steps); position:absolute; left:0; top:10px;
+      width:30px; height:30px; border-radius:50%;
+      background:var(--primary); color:white;
+      font-weight:800; font-size:0.85rem;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .faq-item { background:var(--white); border-radius:var(--radius); margin-bottom:14px; box-shadow:var(--card-shadow); overflow:hidden; }
+    .faq-question {
+      padding:18px 24px; font-weight:700; font-size:1rem; cursor:pointer;
+      display:flex; justify-content:space-between; align-items:center;
+      color:var(--primary-dark); user-select:none; transition:background 0.2s;
+    }
+    .faq-question:hover { background:var(--bg2); }
+    .faq-question.open { background:var(--bg2); color:var(--primary); }
+    .faq-arrow { font-size:1.2rem; transition:transform 0.3s; }
+    .faq-question.open .faq-arrow { transform:rotate(180deg); }
+    .faq-answer { max-height:0; overflow:hidden; transition:max-height 0.4s ease; padding:0 24px; font-size:0.93rem; line-height:1.8; color:var(--text); }
+    .faq-answer.open { max-height:400px; padding:0 24px 18px; }
+    .contact-cta {
+      background:linear-gradient(135deg,var(--primary),var(--primary-light));
+      border-radius:var(--radius); padding:32px; text-align:center; color:white; margin-top:32px;
+    }
+    .contact-cta h3 { font-family:'Baloo 2',cursive; font-size:1.6rem; margin-bottom:10px; }
+    .contact-cta p { opacity:0.9; margin-bottom:20px; }
+  </style>
 </head>
 <body>
 
@@ -33,19 +118,134 @@
 </section>
 
 <div class="section">
-  <!-- FILTER TABS -->
-  <div class="category-tabs">
-    <button class="tab-btn active" onclick="filterCat('all', this)">Tất Cả</button>
-    <button class="tab-btn" onclick="filterCat('trasua', this)">🧋 Trà Sữa</button>
-    <button class="tab-btn" onclick="filterCat('tradacbiet', this)">🍃 Trà Đặc Biệt</button>
-    <button class="tab-btn" onclick="filterCat('caphe', this)">☕ Cà Phê</button>
-    <button class="tab-btn" onclick="filterCat('tuoi', this)">🥥 Tươi / COCO</button>
-    <button class="tab-btn" onclick="filterCat('dam', this)">🫧 Đặc Biệt Đậm</button>
-    <button class="tab-btn" onclick="filterCat('sale', this)">🔥 Đang Giảm Giá</button>
+
+  <!-- ===== SWITCHER ===== -->
+  <div class="page-switcher">
+    <button class="page-switch-btn active" id="btn-menu" onclick="switchPage('menu')">🧋 Thực Đơn</button>
+    <button class="page-switch-btn" id="btn-policy" onclick="switchPage('policy')">📋 Chính Sách</button>
   </div>
 
-  <div id="menu-container"></div>
-  <div id="no-result">😢 Không tìm thấy sản phẩm phù hợp</div>
+  <!-- ===== THỰC ĐƠN ===== -->
+  <div id="page-menu">
+    <div class="category-tabs">
+      <button class="tab-btn active" onclick="filterCat('all', this)">Tất Cả</button>
+      <button class="tab-btn" onclick="filterCat('trasua', this)">🧋 Trà Sữa</button>
+      <button class="tab-btn" onclick="filterCat('tradacbiet', this)">🍃 Trà Đặc Biệt</button>
+      <button class="tab-btn" onclick="filterCat('caphe', this)">☕ Cà Phê</button>
+      <button class="tab-btn" onclick="filterCat('tuoi', this)">🥥 Tươi / COCO</button>
+      <button class="tab-btn" onclick="filterCat('dam', this)">🫧 Đặc Biệt Đậm</button>
+      <button class="tab-btn" onclick="filterCat('sale', this)">🔥 Đang Giảm Giá</button>
+    </div>
+    <div id="menu-container"></div>
+    <div id="no-result">😢 Không tìm thấy sản phẩm phù hợp</div>
+  </div>
+
+  <!-- ===== CHÍNH SÁCH ===== -->
+  <div id="page-policy" style="display:none">
+    <div class="policy-tabs">
+      <button class="policy-tab active" onclick="showPolicyTab('order',this)">🛒 Đặt Hàng</button>
+      <button class="policy-tab" onclick="showPolicyTab('payment',this)">💳 Thanh Toán</button>
+      <button class="policy-tab" onclick="showPolicyTab('delivery',this)">🚴 Giao Hàng</button>
+      <button class="policy-tab" onclick="showPolicyTab('return',this)">🔄 Đổi Trả</button>
+      <button class="policy-tab" onclick="showPolicyTab('faq',this)">❓ FAQ</button>
+    </div>
+
+    <!-- TAB: ĐẶT HÀNG -->
+    <div class="policy-section active" id="ptab-order">
+      <div class="policy-card">
+        <h3>📝 Cách Đặt Hàng Tại BiBurn</h3>
+        <ul class="step-list">
+          <li>Vào trang <strong>Thực Đơn</strong>, chọn đồ uống bạn thích và nhấn <em>+ Thêm</em> vào giỏ.</li>
+          <li>Nhấn vào icon 🛒 trên thanh điều hướng để xem giỏ hàng. Kiểm tra số lượng và điều chỉnh nếu cần.</li>
+          <li>Nhấn <strong>Thanh Toán</strong>, điền đầy đủ thông tin: tên, số điện thoại, địa chỉ giao hàng.</li>
+          <li>Chọn phương thức thanh toán và nhấn <strong>Đặt Hàng</strong>. Bạn sẽ nhận mã đơn hàng ngay lập tức.</li>
+          <li>Theo dõi trạng thái đơn hàng tại trang <a href="orders.html" style="color:var(--primary)">Đơn Hàng Của Tôi</a>.</li>
+        </ul>
+      </div>
+      <div class="policy-card">
+        <h3>⏰ Thời Gian Hoạt Động</h3>
+        <p>BiBurn phục vụ đặt hàng online từ <strong>7:00 – 22:00</strong> mỗi ngày trong tuần.</p>
+        <p>Đơn hàng đặt sau 22:00 sẽ được xử lý vào sáng hôm sau từ 7:00.</p>
+        <div class="highlight-box">🎉 <strong>Tip:</strong> Đặt trước giờ cao điểm (11:00 – 13:00 và 17:00 – 19:00) để nhận hàng nhanh hơn!</div>
+      </div>
+      <div class="policy-card">
+        <h3>✏️ Chỉnh Sửa & Hủy Đơn</h3>
+        <p>Bạn có thể hủy hoặc chỉnh sửa đơn hàng trong vòng <strong>5 phút</strong> sau khi đặt, khi đơn chưa được xác nhận.</p>
+        <p>Sau khi đơn có trạng thái <em>Đã Xác Nhận</em>, vui lòng liên hệ trực tiếp qua số điện thoại để được hỗ trợ.</p>
+      </div>
+    </div>
+
+    <!-- TAB: THANH TOÁN -->
+    <div class="policy-section" id="ptab-payment">
+      <div class="policy-card">
+        <h3>💳 Phương Thức Thanh Toán</h3>
+        <ul>
+          <li>💵 <strong>Tiền mặt</strong> khi nhận hàng (COD) – áp dụng cho tất cả đơn hàng.</li>
+          <li>📱 <strong>Chuyển khoản ngân hàng</strong> – quét mã QR sau khi đặt hàng.</li>
+          <li>🔵 <strong>Ví MoMo</strong> – thanh toán nhanh, nhận ngay ưu đãi 5% cho lần đầu.</li>
+          <li>💚 <strong>ZaloPay / ViettelMoney</strong> – hỗ trợ đầy đủ các ví phổ biến.</li>
+        </ul>
+      </div>
+      <div class="policy-card">
+        <h3>🧾 Hóa Đơn & Khuyến Mãi</h3>
+        <p>Hóa đơn điện tử sẽ được gửi về số điện thoại sau khi đơn hoàn thành.</p>
+        <p>Mã giảm giá nhập tại bước thanh toán. Mỗi đơn chỉ áp dụng <strong>1 mã</strong>.</p>
+        <div class="highlight-box">🎁 Mã hiện tại: <strong>BiBurn10</strong> – giảm 10% đơn từ 50.000đ. Có hiệu lực đến 30/6/2026.</div>
+      </div>
+    </div>
+
+    <!-- TAB: GIAO HÀNG -->
+    <div class="policy-section" id="ptab-delivery">
+      <div class="policy-card">
+        <h3>🚴 Chính Sách Giao Hàng</h3>
+        <ul>
+          <li>Phạm vi giao hàng: trong bán kính <strong>5km</strong> từ cửa hàng.</li>
+          <li>Thời gian giao: <strong>15 – 30 phút</strong> tùy khu vực và khung giờ.</li>
+          <li>Phí ship: <strong>15.000đ</strong> / đơn. Miễn phí cho đơn từ <strong>100.000đ</strong> trở lên.</li>
+        </ul>
+      </div>
+      <div class="policy-card">
+        <h3>📦 Đóng Gói & Bảo Quản</h3>
+        <p>Tất cả đồ uống được đóng gói kỹ, có hộp giữ lạnh/giữ nhiệt cho đơn từ 2 ly trở lên.</p>
+        <p>Đồ uống tươi cần dùng ngay trong vòng <strong>30 phút</strong> sau khi nhận.</p>
+        <div class="highlight-box">🧊 <strong>Lưu ý:</strong> Trà sữa có trân châu nên uống ngay khi nhận, tránh để lâu.</div>
+      </div>
+    </div>
+
+    <!-- TAB: ĐỔI TRẢ -->
+    <div class="policy-section" id="ptab-return">
+      <div class="policy-card">
+        <h3>🔄 Chính Sách Đổi / Hoàn Tiền</h3>
+        <p>BiBurn cam kết chất lượng sản phẩm. Nếu bạn nhận được đồ uống không đúng yêu cầu, chúng tôi sẽ hỗ trợ:</p>
+        <ul>
+          <li>✅ Làm lại sản phẩm <strong>miễn phí</strong> nếu lỗi từ phía cửa hàng.</li>
+          <li>✅ Hoàn 100% tiền nếu không thể giao hàng do lỗi hệ thống.</li>
+          <li>⚠️ Không áp dụng đổi trả nếu khách hàng đặt sai hoặc đồ uống đã được sử dụng một phần.</li>
+        </ul>
+      </div>
+      <div class="policy-card">
+        <h3>📞 Phản Ánh & Khiếu Nại</h3>
+        <p>Liên hệ trong vòng <strong>1 giờ</strong> sau khi nhận hàng nếu có vấn đề:</p>
+        <ul>
+          <li>📞 Hotline: <strong>0777 777 777</strong> (7:00 – 22:00)</li>
+          <li>✉️ Email: <a href="mailto:khoap1808@gmail.com" style="color:var(--primary)">khoap1808@gmail.com</a></li>
+          <li>💬 Chat tại trang <a href="contact.html" style="color:var(--primary)">Liên Hệ</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- TAB: FAQ -->
+    <div class="policy-section" id="ptab-faq">
+      <div id="faq-list-menu"></div>
+    </div>
+
+    <div class="contact-cta">
+      <h3>Còn Thắc Mắc?</h3>
+      <p>Đội ngũ hỗ trợ BiBurn luôn sẵn sàng giải đáp mọi câu hỏi của bạn.</p>
+      <a href="contact.html" class="btn btn-white">💬 Liên Hệ Ngay</a>
+    </div>
+  </div>
+
 </div>
 
 <!-- CART OVERLAY -->
@@ -79,5 +279,49 @@
 <script src="../js/data.js"></script>
 <script src="../js/lib4.js"></script>
 <script src="../js/auth.js"></script>
+<script>
+// ===== SWITCHER: Thực Đơn / Chính Sách =====
+function switchPage(page) {
+  const isMenu = page === 'menu';
+  document.getElementById('page-menu').style.display   = isMenu ? '' : 'none';
+  document.getElementById('page-policy').style.display = isMenu ? 'none' : '';
+  document.getElementById('btn-menu').classList.toggle('active', isMenu);
+  document.getElementById('btn-policy').classList.toggle('active', !isMenu);
+  // Ẩn search khi xem chính sách
+  document.getElementById('searchInput').closest('.search-bar').style.display = isMenu ? '' : 'none';
+}
+
+// ===== POLICY TABS =====
+function showPolicyTab(id, btn) {
+  document.querySelectorAll('.policy-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.policy-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('ptab-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ===== FAQ ACCORDION (render vào page-policy) =====
+const FAQ_DATA = [
+  { q: 'Tôi có thể đặt hàng mà không cần tài khoản không?', a: 'Có! Bạn có thể đặt hàng như khách. Tuy nhiên đăng ký tài khoản giúp theo dõi đơn hàng dễ dàng hơn.' },
+  { q: 'Đồ uống có đá hay không đá?', a: 'Mặc định có đá. Ghi chú "không đá" hoặc "ít đá" trong phần ghi chú khi đặt hàng.' },
+  { q: 'Có thể thay đổi độ ngọt không?', a: 'Có, ghi rõ trong phần ghi chú: 30%, 50%, 70%, 100% đường.' },
+  { q: 'BiBurn có cửa hàng thực tế không?', a: 'Hiện tại BiBurn hoạt động online. Địa chỉ bếp: 123 Đường BiBurn, TP. Trà Vinh.' },
+  { q: 'Đặt tối thiểu bao nhiêu mới được giao?', a: 'Không có giới hạn đơn tối thiểu. Đơn dưới 100.000đ sẽ có phí ship 15.000đ.' },
+];
+(function renderFaq() {
+  const el = document.getElementById('faq-list-menu');
+  if (!el) return;
+  el.innerHTML = FAQ_DATA.map((f, i) => `
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        ${f.q} <span class="faq-arrow">▼</span>
+      </div>
+      <div class="faq-answer">${f.a}</div>
+    </div>`).join('');
+})();
+function toggleFaq(el) {
+  el.classList.toggle('open');
+  el.nextElementSibling.classList.toggle('open');
+}
+</script>
 </body>
 </html>

@@ -6,7 +6,51 @@
   <title>Admin – BiBurn</title>
   <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/style2.css" />
-  
+  <style>
+    /* ===== FIX SIDEBAR: luôn dọc, không bị ẩn ở mobile ===== */
+    .admin-layout {
+      display: flex !important;
+      flex-direction: row !important;
+      min-height: 100vh;
+    }
+    .sidebar {
+      display: flex !important;
+      flex-direction: column !important;
+      width: 240px !important;
+      min-width: 240px !important;
+      position: fixed !important;
+      top: 0; left: 0; bottom: 0;
+      overflow-y: auto;
+      z-index: 50;
+    }
+    .sidebar-nav {
+      display: flex !important;
+      flex-direction: column !important;
+    }
+    .sidebar-nav a {
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+    }
+    .admin-main {
+      margin-left: 240px !important;
+      flex: 1 !important;
+    }
+    /* Responsive nhỏ: thu sidebar lại thành icon-only thay vì ẩn */
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 64px !important;
+        min-width: 64px !important;
+      }
+      .sidebar-brand { font-size: 0; padding: 16px 8px !important; text-align: center; }
+      .sidebar-brand::after { content: '🧋'; font-size: 1.6rem; }
+      .sidebar-section { display: none; }
+      .sidebar-nav a { padding: 14px 0 !important; justify-content: center !important; gap: 0 !important; }
+      .sidebar-nav a .nav-icon { width: auto !important; font-size: 1.4rem !important; }
+      .sidebar-nav a span:not(.nav-icon) { display: none; }
+      .admin-main { margin-left: 64px !important; }
+    }
+  </style>
 </head>
 <body>
 
